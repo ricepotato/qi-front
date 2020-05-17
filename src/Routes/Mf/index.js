@@ -1,5 +1,4 @@
 import React from "react";
-import queryString from "query-string";
 
 const mf = ({ location, match }) => {
   const {
