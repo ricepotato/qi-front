@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/qi-front/static/css/main.523f09c5.chunk.css",
+    "main.js": "/qi-front/static/js/main.5eb82463.chunk.js",
+    "main.js.map": "/qi-front/static/js/main.5eb82463.chunk.js.map",
+    "runtime-main.js": "/qi-front/static/js/runtime-main.7c5aaf5f.js",
+    "runtime-main.js.map": "/qi-front/static/js/runtime-main.7c5aaf5f.js.map",
+    "static/js/2.ece3bce0.chunk.js": "/qi-front/static/js/2.ece3bce0.chunk.js",
+    "static/js/2.ece3bce0.chunk.js.map": "/qi-front/static/js/2.ece3bce0.chunk.js.map",
+    "index.html": "/qi-front/index.html",
+    "precache-manifest.12c87e65d96c31de08726eb270ab9317.js": "/qi-front/precache-manifest.12c87e65d96c31de08726eb270ab9317.js",
+    "service-worker.js": "/qi-front/service-worker.js",
+    "static/css/main.523f09c5.chunk.css.map": "/qi-front/static/css/main.523f09c5.chunk.css.map",
+    "static/js/2.ece3bce0.chunk.js.LICENSE.txt": "/qi-front/static/js/2.ece3bce0.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/qi-front/static/media/logo.ee7cd8ed.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c5aaf5f.js",
+    "static/js/2.ece3bce0.chunk.js",
+    "static/css/main.523f09c5.chunk.css",
+    "static/js/main.5eb82463.chunk.js"
+  ]
+}
