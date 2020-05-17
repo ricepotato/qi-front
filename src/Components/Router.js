@@ -7,7 +7,7 @@ export default () => (
   <Router>
     <>
       <Route path="/" exact component={Home} />
-      <Route path="/mf" component={Mf}></Route>
+      <Route path="/mf/:market/:year" exact component={Mf}></Route>
     </>
   </Router>
 );
