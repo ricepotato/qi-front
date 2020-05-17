@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# homepage
+
+https://ricepotato.github.io/qi-front/
+
 ## Available Scripts
 
 In the project directory, you can run:
