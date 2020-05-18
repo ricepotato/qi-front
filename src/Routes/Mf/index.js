@@ -1,11 +1,15 @@
 import React from "react";
 import MFTable from "../../Components/MFTable";
 import MFControl from "../../Components/MFControl";
+import { stock } from "../../api";
 
-const mf = ({ location, match }) => {
+const mf = async ({ location, match }) => {
   const {
     params: { year, market },
   } = match;
+
+  const res = await stock.get(year, market);
+  console.log(res);
 
   return (
     <>
