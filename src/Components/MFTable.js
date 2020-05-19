@@ -24,12 +24,13 @@ const MFTable = ({ mfList }) => (
     </thead>
     <tbody>
       {mfList.map((item, idx) => (
-        <tr>
+        <tr key={item.code}>
           <td>{item.total_rank}</td>
           <td>
             <a
               target="_blank"
               href={`http://comp.fnguide.com/SVO2/asp/SVD_Main.asp?pGB=1&gicode=A${item.code}&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701`}
+              rel="noopener noreferrer"
             >
               {item.name}
             </a>
