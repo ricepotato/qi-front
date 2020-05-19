@@ -1,8 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
-import Mf from "../Routes/Mf";
-
+import Mf from "../Views/Mf";
 export default () => (
   <Router>
     <>
