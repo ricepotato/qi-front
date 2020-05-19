@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import MFTable from "../../Components/MFTable";
 import MFControl from "../../Components/MFControl";
 import { stock } from "../../api";
+import Loader from "../../Components/Loader";
 
 const Mf = ({ location, match }) => {
-  const [stocks, setStocks] = useState([]);
+  const [mfList, setMfList] = useState([]);
   const {
     params: { year, market },
   } = match;
 
-  const getStock = async (year, market) => {
+  const getMfList = async (year, market) => {
     try {
       const res = await stock.get(year, market);
-      const { data } = res;
-      setStocks(data);
+      const {
+        data: { data },
+      } = res;
+      setMfList(data);
       console.log(data);
     } catch (e) {
       console.log(e);
@@ -21,14 +24,19 @@ const Mf = ({ location, match }) => {
   };
 
   useEffect(() => {
-    getStock(year, market);
-  }, []);
+    getMfList(year, market);
+  }, [market, year]);
 
   return (
     <>
       <h1>마법공식 종목 추천</h1>
       <MFControl year={year} market={market}></MFControl>
-      <MFTable></MFTable>
+
+      {mfList.length > 0 ? (
+        <MFTable mfList={mfList}></MFTable>
+      ) : (
+        <Loader></Loader>
+      )}
     </>
   );
 };
