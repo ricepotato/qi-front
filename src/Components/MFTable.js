@@ -8,45 +8,42 @@ const TableRow = styeld.tr``;
 
 const Thead = styeld.tr``;
 
-const stock = () => {
-  return (
-    <Table>
-      <thead>
+const MFTable = ({ mfList }) => (
+  <Table>
+    <thead>
+      <tr>
+        <th>종합순위</th>
+        <th>종목명</th>
+        <th>ROE</th>
+        <th>ROA</th>
+        <th>PER</th>
+        <th>PBR</th>
+        <th>시가총액</th>
+        <th>현재 거래가</th>
+      </tr>
+    </thead>
+    <tbody>
+      {mfList.map((item, idx) => (
         <tr>
-          <th>종합순위</th>
-          <th>종목명</th>
-          <th>ROE</th>
-          <th>ROA</th>
-          <th>PER</th>
-          <th>PBR</th>
-          <th>시가총액</th>
-          <th>현재 거래가</th>
+          <td>{item.total_rank}</td>
+          <td>
+            <a
+              target="_blank"
+              href={`http://comp.fnguide.com/SVO2/asp/SVD_Main.asp?pGB=1&gicode=A${item.code}&cID=&MenuYn=Y&ReportGB=&NewMenuID=101&stkGb=701`}
+            >
+              {item.name}
+            </a>
+          </td>
+          <td>{item.roe}</td>
+          <td>{item.roa}</td>
+          <td>{item.per}</td>
+          <td>{item.pbr}</td>
+          <td>{item.market_cap}</td>
+          <td>-</td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>카카오</td>
-          <td>1.3</td>
-          <td>4.5</td>
-          <td>11.2</td>
-          <td>33.1</td>
-          <td>1445</td>
-          <td>29311</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
-};
+      ))}
+    </tbody>
+  </Table>
+);
 
-export default stock;
+export default MFTable;
