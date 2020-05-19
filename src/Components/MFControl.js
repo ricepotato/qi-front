@@ -1,10 +1,19 @@
 import React from "react";
 import styeld from "styled-components";
+import { Link } from "react-router-dom";
 
 const Arrow = styeld.button`
 `;
 
 const mfControl = ({ year, market }) => {
+  const onChnageMarket = (e) => {
+    const {
+      target: { value },
+    } = e;
+    window.location.href = `/#/mf/${value}/${year}`;
+    console.log(value);
+  };
+
   return (
     <div>
       <form>
@@ -21,8 +30,9 @@ const mfControl = ({ year, market }) => {
               value="KOSDAQ"
               type="radio"
               checked={market === "KOSDAQ" ? true : false}
+              onChange={onChnageMarket}
             ></input>
-            <label for="chk_market_kosdaq">KOSDAQ</label>
+            <label htmlFor="chk_market_kosdaq">KOSDAQ</label>
 
             <input
               id="chk_market_kospi"
@@ -30,8 +40,9 @@ const mfControl = ({ year, market }) => {
               value="KOSPI"
               type="radio"
               checked={market === "KOSPI" ? true : false}
+              onChange={onChnageMarket}
             ></input>
-            <label for="chk_market_kospi">KOSPI</label>
+            <label htmlFor="chk_market_kospi">KOSPI</label>
           </div>
         </div>
 
