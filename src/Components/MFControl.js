@@ -11,7 +11,18 @@ const mfControl = ({ year, market }) => {
       target: { value },
     } = e;
     window.location.href = `/#/mf/${value}/${year}`;
-    console.log(value);
+    // console.log(value);
+  };
+
+  const onClickArrow = (e) => {
+    e.preventDefault();
+    const { target } = e;
+    console.log(target.innerHTML);
+    if (target.innerHTML === "&lt;") {
+      window.location.href = `/#/mf/${market}/${parseInt(year) - 1}`;
+    } else if (target.innerHTML === "&gt;") {
+      window.location.href = `/#/mf/${market}/${parseInt(year) + 1}`;
+    }
   };
 
   return (
@@ -19,9 +30,9 @@ const mfControl = ({ year, market }) => {
       <form>
         <div>
           <div>
-            <Arrow href="#">&lt;</Arrow>
+            <Arrow onClick={onClickArrow}>&lt;</Arrow>
             <span>{year}</span>
-            <Arrow href="#">&gt;</Arrow>
+            <Arrow onClick={onClickArrow}>&gt;</Arrow>
           </div>
           <div>
             <input
