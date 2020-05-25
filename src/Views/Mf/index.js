@@ -41,7 +41,6 @@ const Mf = ({ location, match }) => {
 
   return (
     <>
-      <h1>마법공식 종목 추천</h1>
       <MFControl
         year={year}
         market={market}
