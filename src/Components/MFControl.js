@@ -8,6 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
+import { useHistory } from "react-router-dom";
 
 const Container = styeld.div`
 `;
@@ -20,14 +21,16 @@ const RadioLabel = styeld.label`
 let newTerms = {};
 
 const MfControl = ({ year, market, termObj, setTermObj }) => {
+  const history = useHistory();
   const [terms, setTerms] = useState({
     ...termObj,
   });
-  const onChnageMarket = (e) => {
+
+  const onClickMarket = (e) => {
     const {
       target: { value },
     } = e;
-    window.location.href = `/#/mf/${value}/${year}/`;
+    history.push(`/mf/${value}/${year}/`);
   };
 
   const handleSubmit = (e) => {
@@ -77,7 +80,7 @@ const MfControl = ({ year, market, termObj, setTermObj }) => {
               name="market"
               value="KOSDAQ"
               checked={market === "KOSDAQ" ? true : false}
-              onChange={onChnageMarket}
+              onClick={onClickMarket}
             />
             <RadioLabel htmlFor="chk_market_kosdaq">KOSDAQ</RadioLabel>
             <FormControl
@@ -88,7 +91,7 @@ const MfControl = ({ year, market, termObj, setTermObj }) => {
               name="market"
               value="KOSPI"
               checked={market === "KOSPI" ? true : false}
-              onChange={onChnageMarket}
+              onClick={onClickMarket}
             />
             <RadioLabel htmlFor="chk_market_kospi">KOSPI</RadioLabel>
           </Form>
