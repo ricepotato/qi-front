@@ -1,8 +1,7 @@
 import React from "react";
 import styeld from "styled-components";
 
-const Table = styeld.table`
-`;
+import Table from "react-bootstrap/Table";
 
 const TableRow = styeld.tr``;
 
