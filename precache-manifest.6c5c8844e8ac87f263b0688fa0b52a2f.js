@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5d09b4f6718aea4e62e02bc1b07924e2",
+    "revision": "b9ab0e711b405d445598fff0c88c851c",
     "url": "/qi-front/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/qi-front/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "51cf030150ba1770721c",
+    "revision": "f6ac3f97da7ea8b45e28",
     "url": "/qi-front/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/qi-front/static/js/2.5b72f302.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "51cf030150ba1770721c",
-    "url": "/qi-front/static/js/main.aca8c71a.chunk.js"
+    "revision": "f6ac3f97da7ea8b45e28",
+    "url": "/qi-front/static/js/main.33299b63.chunk.js"
   },
   {
     "revision": "4324c9a3d840be5e77dc",
