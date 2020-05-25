@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const home = () => {
+const Home = () => {
+  const history = useHistory();
+
+  const redirect = () => {
+    history.push(`/mf/KOSDAQ/2019/`);
+  };
+
+  useEffect(() => {
+    redirect();
+  }, []);
+
   return (
     <>
       <h1>Home</h1>
@@ -10,4 +21,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
