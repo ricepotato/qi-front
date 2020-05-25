@@ -35,8 +35,12 @@ const MFTable = ({ mfList }) => (
             </a>
           </td>
           <td>{item.roe}</td>
-          <td>{item.roa}</td>
-          <td>{item.per}</td>
+          <td>
+            {item.roa}({item.roa_rank})
+          </td>
+          <td>
+            {item.per}({item.per_rank})
+          </td>
           <td>{item.pbr}</td>
           <td>{item.market_cap}</td>
           <td>-</td>
