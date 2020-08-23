@@ -17,6 +17,7 @@ const Mf = ({ location, match }) => {
   } = match;
 
   const getMfList = async (year, market) => {
+    setMfList([]);
     try {
       const res = await stock.get(
         year,
