@@ -89,7 +89,7 @@ const MfControl = ({ query, setQuery }) => {
               id="chk_market_kosdaq"
               name="market"
               value="KOSDAQ"
-              checked={query.market === "KOSDAQ" ? true : false}
+              defaultChecked={query.market === "KOSDAQ" ? true : false}
               onClick={onClickMarket}
             />
             <RadioLabel htmlFor="chk_market_kosdaq">KOSDAQ</RadioLabel>
@@ -100,7 +100,7 @@ const MfControl = ({ query, setQuery }) => {
               id="chk_market_kospi"
               name="market"
               value="KOSPI"
-              checked={query.market === "KOSPI" ? true : false}
+              defaultChecked={query.market === "KOSPI" ? true : false}
               onClick={onClickMarket}
             />
             <RadioLabel htmlFor="chk_market_kospi">KOSPI</RadioLabel>

@@ -1,4 +1,4 @@
-const BASE_URL = "https://white-sashimi.uc.r.appspot.com/";
+const BASE_URL = "https://white-sashimi.uc.r.appspot.com";
 
 export const stockApi = {
   stocks: ({ queryKey }) => {
