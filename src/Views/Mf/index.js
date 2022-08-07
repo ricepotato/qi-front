@@ -1,59 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MFTable from "../../Components/MFTable";
 import MFControl from "../../Components/MFControl";
-import { stock } from "../../api";
+import { stockApi } from "../../api";
 import Loader from "../../Components/Loader";
+import { useQuery } from "@tanstack/react-query";
 
 const Mf = ({ location, match }) => {
-  const [mfList, setMfList] = useState([]);
-  const [terms, setTerms] = useState({
+  const {
+    params: { year, market },
+  } = match;
+
+  const [query, setQuery] = useState({
+    year,
+    market,
     limit: 20,
     mc_min: null,
     mc_max: null,
   });
 
-  const {
-    params: { year, market },
-  } = match;
-
-  const getMfList = async (year, market) => {
-    setMfList([]);
-    try {
-      const res = await stock.get(
-        year,
-        market,
-        terms.mc_min,
-        terms.mc_max,
-        terms.limit
-      );
-      const {
-        data: { data },
-      } = res;
-      setMfList(data);
-      console.log(data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    getMfList(year, market);
-  }, [market, year, terms]);
+  const { isLoading, data: mfList } = useQuery(
+    ["stock", query],
+    stockApi.stocks
+  );
 
   return (
     <>
-      <MFControl
-        year={year}
-        market={market}
-        termObj={terms}
-        setTermObj={setTerms}
-      ></MFControl>
-
-      {mfList.length > 0 ? (
-        <MFTable mfList={mfList}></MFTable>
-      ) : (
-        <Loader></Loader>
-      )}
+      <MFControl query={query} setQuery={setQuery}></MFControl>
+      {isLoading ? <Loader></Loader> : null}
+      {mfList ? <MFTable mfList={mfList.data}></MFTable> : null}
     </>
   );
 };

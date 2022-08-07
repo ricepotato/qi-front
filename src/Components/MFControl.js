@@ -18,31 +18,21 @@ const RadioLabel = styeld.label`
   color: #fff;
 `;
 
-let newTerms = {};
-
-const MfControl = ({ year, market, termObj, setTermObj }) => {
+const MfControl = ({ query, setQuery }) => {
   const history = useHistory();
-  const [terms, setTerms] = useState({
-    ...termObj,
-  });
+  const [values, setValues] = useState(query);
 
   const onClickMarket = (e) => {
     const {
       target: { value },
     } = e;
-    history.push(`/mf/${value}/${year}/`);
+    history.push(`/mf/${value}/${query.year}/`);
+    setQuery({ ...query, market: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTermObj(newTerms);
-  };
-
-  const updateTerms = (e) => {
-    const { target } = e;
-    newTerms = { ...terms };
-    newTerms[target.name] = target.value;
-    setTerms(newTerms);
+    setQuery(values);
   };
 
   return (
@@ -56,18 +46,38 @@ const MfControl = ({ year, market, termObj, setTermObj }) => {
         <Navbar.Brand>마법공식 종목추천</Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <NavDropdown title={year} id="basic-nav-dropdown">
+            <NavDropdown title={query.year} id="basic-nav-dropdown">
               <NavDropdown.Item>
-                <Link to={`/mf/${market}/2019/`}>2019</Link>
+                <Link
+                  to={`/mf/${query.market}/2019/`}
+                  onClick={() => setQuery({ ...query, year: 2019 })}
+                >
+                  2019
+                </Link>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <Link to={`/mf/${market}/2018/`}>2018</Link>
+                <Link
+                  to={`/mf/${query.market}/2018/`}
+                  onClick={() => setQuery({ ...query, year: 2018 })}
+                >
+                  2018
+                </Link>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <Link to={`/mf/${market}/2017/`}>2017</Link>
+                <Link
+                  to={`/mf/${query.market}/2017/`}
+                  onClick={() => setQuery({ ...query, year: 2017 })}
+                >
+                  2017
+                </Link>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <Link to={`/mf/${market}/2016/`}>2016</Link>
+                <Link
+                  to={`/mf/${query.market}/2016/`}
+                  onClick={() => setQuery({ ...query, year: 2016 })}
+                >
+                  2016
+                </Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
@@ -79,7 +89,7 @@ const MfControl = ({ year, market, termObj, setTermObj }) => {
               id="chk_market_kosdaq"
               name="market"
               value="KOSDAQ"
-              checked={market === "KOSDAQ" ? true : false}
+              checked={query.market === "KOSDAQ" ? true : false}
               onClick={onClickMarket}
             />
             <RadioLabel htmlFor="chk_market_kosdaq">KOSDAQ</RadioLabel>
@@ -90,7 +100,7 @@ const MfControl = ({ year, market, termObj, setTermObj }) => {
               id="chk_market_kospi"
               name="market"
               value="KOSPI"
-              checked={market === "KOSPI" ? true : false}
+              checked={query.market === "KOSPI" ? true : false}
               onClick={onClickMarket}
             />
             <RadioLabel htmlFor="chk_market_kospi">KOSPI</RadioLabel>
@@ -100,26 +110,26 @@ const MfControl = ({ year, market, termObj, setTermObj }) => {
             <FormControl
               type="number"
               className="mr-sm-2"
-              placeholder="최소 시가 총액"
+              placeholder="최소 시가 총액(억원)"
               name="mc_min"
-              value={terms.mc_min}
-              onChange={updateTerms}
+              value={values.mc_min}
+              onChange={(e) => setValues({ ...values, mc_min: e.target.value })}
             />
             <FormControl
               type="number"
               className="mr-sm-2"
-              placeholder="최대 시가 총액"
+              placeholder="최대 시가 총액(억원)"
               name="mc_max"
-              value={terms.mc_max}
-              onChange={updateTerms}
+              value={values.mc_max}
+              onChange={(e) => setValues({ ...values, mc_max: e.target.value })}
             />
             <FormControl
               type="number"
               className="mr-sm-2"
               placeholder="출력 항목 수"
               name="limit"
-              onChange={updateTerms}
-              value={terms.limit}
+              value={values.limit}
+              onChange={(e) => setValues({ ...values, limit: e.target.value })}
             />
             <Button type="submit" variant="outline-success">
               Search

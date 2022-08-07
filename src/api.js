@@ -1,13 +1,18 @@
-import axios from "axios";
+const BASE_URL = "https://white-sashimi.uc.r.appspot.com/";
 
-const api = axios.create({
-  baseURL: "https://white-sashimi.uc.r.appspot.com/",
-});
-
-export const stock = {
-  get: (year, market, mc_min = null, mc_max = null, limit = 20) => {
-    return api.get(`stocks/${market}/${year}/`, {
-      params: { mc_min, mc_max, limit },
-    });
+export const stockApi = {
+  stocks: ({ queryKey }) => {
+    const [_, query] = queryKey;
+    const fetchUrlArr = [
+      `${BASE_URL}/stocks/${query.market}/${query.year}/?limit=${query.limit}`,
+    ];
+    if (query.mc_max) {
+      fetchUrlArr.push(`&mc_max=${query.mc_max}`);
+    }
+    if (query.mc_min) {
+      fetchUrlArr.push(`&mc_min=${query.mc_min}`);
+    }
+    const fetchUrl = fetchUrlArr.join("");
+    return fetch(fetchUrl).then((res) => res.json());
   },
 };
